@@ -59,9 +59,11 @@ public class SimpleSheetTest {
 
     @AfterClass
     public static void cleanup() throws IOException, ServiceException {
-        for (SpreadsheetEntry sheet : ss.getSheetFeed().getEntries()) {
-            if (sheet.getTitle().getPlainText().startsWith("__")) {
-                ss.deleteSheet(sheet);
+        if (ss != null) {
+            for (SpreadsheetEntry sheet : ss.getSheetFeed().getEntries()) {
+                if (sheet.getTitle().getPlainText().startsWith("__")) {
+                    ss.deleteSheet(sheet);
+                }
             }
         }
     }
